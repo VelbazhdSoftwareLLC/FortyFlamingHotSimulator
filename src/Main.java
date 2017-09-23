@@ -94,11 +94,11 @@ public class Main {
 
 			new int[] { 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 
-			new int[] { 80, 0, 60, 40, 20, 20, 8, 8, 8, 0, 0, 0, 0 },
+			new int[] { 80, 0, 60, 40, 20, 20, 8, 8, 8, 8, 0, 0, 0 },
 
-			new int[] { 800, 0, 200, 100, 80, 80, 40, 40, 40, 0, 0, 0, 0 },
+			new int[] { 800, 0, 200, 100, 80, 80, 40, 40, 40, 40, 0, 0, 0 },
 
-			new int[] { 20000, 0, 1000, 300, 200, 200, 100, 100, 100, 0, 0, 0, 0 },
+			new int[] { 20000, 0, 1000, 300, 200, 200, 100, 100, 100, 100, 0, 0, 0 },
 
 	};
 
@@ -250,12 +250,12 @@ public class Main {
 	/**
 	 * Stips in base game.
 	 */
-	private static int[][] baseReels = { {} };
+	private static int[][] baseReels = null;
 
 	/**
 	 * Stips in free spins.
 	 */
-	private static int[][] freeReels = { {} };
+	private static int[][] freeReels = null;
 
 	/**
 	 * Use reels stops in brute force combinations generation.
@@ -1026,7 +1026,7 @@ public class Main {
 		System.out.println();
 
 		System.out.println("Base Game Reels:");
-		for (int i = 0; i < baseReels.length; i++) {
+		for (int i = 0; baseReels != null && i < baseReels.length; i++) {
 			for (int j = 0; j < baseReels[i].length; j++) {
 				if (j % 10 == 0) {
 					System.out.println();
@@ -1038,7 +1038,7 @@ public class Main {
 		System.out.println();
 
 		System.out.println("Free Games Reels:");
-		for (int i = 0; i < freeReels.length; i++) {
+		for (int i = 0; freeReels != null && i < freeReels.length; i++) {
 			for (int j = 0; j < freeReels[i].length; j++) {
 				if (j % 10 == 0) {
 					System.out.println();
@@ -1064,12 +1064,12 @@ public class Main {
 					new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 
 			};
-			for (int i = 0; i < baseReels.length; i++) {
+			for (int i = 0; baseReels != null && i < baseReels.length; i++) {
 				for (int j = 0; j < baseReels[i].length; j++) {
 					counters[i][baseReels[i][j]]++;
 				}
 			}
-			for (int i = 0; i < baseReels.length; i++) {
+			for (int i = 0; baseReels != null && i < baseReels.length; i++) {
 				System.out.print("\tReel " + (i + 1));
 			}
 			System.out.println();
@@ -1082,7 +1082,7 @@ public class Main {
 			}
 			System.out.println("---------------------------------------------");
 			System.out.print("Total:\t");
-			long combinations = 1L;
+			long combinations = (baseReels == null) ? 0L : 1L;
 			for (int i = 0; i < counters.length; i++) {
 				int sum = 0;
 				for (int j = 0; j < counters[0].length; j++) {
@@ -1114,12 +1114,12 @@ public class Main {
 					new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 
 			};
-			for (int i = 0; i < freeReels.length; i++) {
+			for (int i = 0; freeReels != null && i < freeReels.length; i++) {
 				for (int j = 0; j < freeReels[i].length; j++) {
 					counters[i][freeReels[i][j]]++;
 				}
 			}
-			for (int i = 0; i < freeReels.length; i++) {
+			for (int i = 0; freeReels != null && i < freeReels.length; i++) {
 				System.out.print("\tReel " + (i + 1));
 			}
 			System.out.println();
@@ -1132,7 +1132,7 @@ public class Main {
 			}
 			System.out.println("---------------------------------------------");
 			System.out.print("Total:\t");
-			long combinations = 1L;
+			long combinations = (freeReels == null) ? 0L : 1L;
 			for (int i = 0; i < counters.length; i++) {
 				int sum = 0;
 				for (int j = 0; j < counters[0].length; j++) {
