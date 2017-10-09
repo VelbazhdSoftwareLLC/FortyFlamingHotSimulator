@@ -1025,29 +1025,45 @@ public class Main {
 		}
 		System.out.println();
 
-		System.out.println("Base Game Reels:");
-		for (int i = 0; baseReels != null && i < baseReels.length; i++) {
-			for (int j = 0; j < baseReels[i].length; j++) {
-				if (j % 10 == 0) {
-					System.out.println();
+		/* Vertical print of the reels. */ {
+			int max = 0;
+			for (int i = 0; baseReels != null && i < baseReels.length; i++) {
+				if (max < baseReels[i].length) {
+					max = baseReels[i].length;
 				}
-				System.out.print(SYMBOLS_NAMES[baseReels[i][j]] + " ");
+			}
+			System.out.println("Base Game Reels:");
+			for (int j = 0; baseReels != null && j < max; j++) {
+				for (int i = 0; i < baseReels.length; i++) {
+					if (j < baseReels[i].length) {
+						System.out.print(SYMBOLS_NAMES[baseReels[i][j]]);
+					}
+					System.out.print("\t");
+				}
+				System.out.println();
 			}
 			System.out.println();
 		}
-		System.out.println();
 
-		System.out.println("Free Games Reels:");
-		for (int i = 0; freeReels != null && i < freeReels.length; i++) {
-			for (int j = 0; j < freeReels[i].length; j++) {
-				if (j % 10 == 0) {
-					System.out.println();
+		/* Vertical print of the reels. */ {
+			int max = 0;
+			for (int i = 0; freeReels != null && i < freeReels.length; i++) {
+				if (max < freeReels[i].length) {
+					max = freeReels[i].length;
 				}
-				System.out.print(SYMBOLS_NAMES[freeReels[i][j]] + " ");
+			}
+			System.out.println("Free Games Reels:");
+			for (int j = 0; freeReels != null && j < max; j++) {
+				for (int i = 0; i < freeReels.length; i++) {
+					if (j < freeReels[i].length) {
+						System.out.print(SYMBOLS_NAMES[freeReels[i][j]]);
+					}
+					System.out.print("\t");
+				}
+				System.out.println();
 			}
 			System.out.println();
 		}
-		System.out.println();
 
 		System.out.println("Base Game Reels:");
 		/* Count symbols in reels. */ {
